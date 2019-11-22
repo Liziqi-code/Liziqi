@@ -1,0 +1,50 @@
+Parameter log
+**********************		
+[1][RemoveFirstTimePoints]		
+Remove Time Points Amount:	10	
+**********************		
+[2][SliceTiming]		
+Slice Number:	43	
+Slice Order:	1   3   5   7   9  11  13  15  17  19  21  23  25  27  29  31  33  35  37  39  41  43   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42	
+Reference Slice:	43	
+TR:	2	
+**********************		
+[3][Realign]		
+**********************		
+[4][T1CoregisterFun]		
+**********************		
+[5][T1Segment]		
+Segment Template:	European	
+**********************		
+[6][NormalizeSeg]		
+BoundingBox:	[-90,-126,-72;90,90,108]	
+VoxelSize:	[3 3 3]	
+**********************		
+[7][Smooth]		
+FWHM:	[6 6 6]	
+**********************		
+[8][Detrend]		
+**********************		
+[9][RegressOutCovariates]		
+If remove global mean signal	No	
+If remove CSF signal	Yes	
+If remove WhiteMatter signal	Yes	
+If remove head motion(Friston-24)	Yes	
+If add mean back?	No	
+Polynomial Trend	1	
+OtherCovariatesList		
+
+
+
+
+Input and Output log
+[PROCESS METHOD]	[EPI AND OTHER INPUT]	[EPI AND OTHER OUTPUT]	[T1 INPUT]	[T1 OUTPUT]	
+RemoveFirstTimePoints	REST	RESTT			
+SliceTiming	RESTT	RESTTA			
+Realign	RESTTA	RESTTAR|RealignParameter			
+T1CoregisterFun	RealignParameter		STRUC	STRUCC	
+T1Segment			STRUCC	STRUCCS	
+NormalizeSeg	RESTTAR	RESTTARW|PicturesForChkNormalization	STRUCCS		
+Smooth	RESTTARW	RESTTARWS			
+Detrend	RESTTARWS	RESTTARWSD			
+RegressOutCovariates	RESTTARWSD|RealignParameter	RESTTARWSDC|CovariatesParameter			
